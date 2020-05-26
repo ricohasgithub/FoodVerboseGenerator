@@ -1,3 +1,4 @@
+import json
 import requests
 
 '''
@@ -11,8 +12,10 @@ app_key = ""
 
 edmam_api_path = "https://api.edamam.com/search?q=" + food + "&app_id=" + app_id + "&app_key=" + app_key
 
-recipe_request = requests.get(edmam_api_path)
+recipe_response = requests.get(edmam_api_path)
+recipe_response_dict = json.loads(recipe_response.text)
 
-print(recipe_request)
+print(recipe_response)
+print(recipe_response_dict)
 
 print("All good!")
