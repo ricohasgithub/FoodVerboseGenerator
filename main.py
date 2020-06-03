@@ -15,7 +15,11 @@ edmam_api_path = "https://api.edamam.com/search?q=" + food + "&app_id=" + app_id
 recipe_response = requests.get(edmam_api_path)
 recipe_response_dict = json.loads(recipe_response.text)
 
+ingredients = recipe_response_dict["hits"][0]["recipe"]["ingredients"]
+
 print(recipe_response)
 print(recipe_response_dict)
+
+print(ingredients)
 
 print("All good!")
