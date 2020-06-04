@@ -39,6 +39,10 @@ recipe_html_doc = urlopen(recipe_html_doc_request).read()
 
 print(recipe_html_doc)
 
-soup_recipe_parser = BeautifulSoup(recipe_html_doc, 'html.parser')
+# Beautiful Soup HTML document parser
+recipe_soup_parser = BeautifulSoup(recipe_html_doc, 'html.parser')
+
+# Retrieve neccesary document details
+recipe_article_content = recipe_soup_parser.findAll("div", {"class": "article-content"})
 
 print("All good!")
