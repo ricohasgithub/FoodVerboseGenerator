@@ -37,12 +37,13 @@ print(source_url)
 recipe_html_doc_request = Request(source_url, headers={"User-Agent": "Chrome/51.0.2704.84"})
 recipe_html_doc = urlopen(recipe_html_doc_request).read()
 
-print(recipe_html_doc)
-
 # Beautiful Soup HTML document parser
 recipe_soup_parser = BeautifulSoup(recipe_html_doc, 'html.parser')
 
-# Retrieve neccesary document details
-recipe_article_content = recipe_soup_parser.findAll("div", {"class": "article-content"})
+# Retrieve neccesary document details; first as a document of all text content and then as text strings
+recipe_article_content = recipe_soup_parser.find("div", {"class": "article-content"})
+recipe_article_text = recipe_article_content.get_text()
+
+print(recipe_article_text)
 
 print("All good!")
