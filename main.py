@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 
@@ -13,8 +14,8 @@ from bs4 import BeautifulSoup
 
 # Edamam Recpie Search API Constants
 food = "pizza"
-app_id = ""
-app_key = ""
+app_id = os.getenv("EDAMAM_RECIPE_ID")
+app_key = os.getenv("EDAMAM_RECIPE_KEY")
 
 # Building API path and retrieving required information
 edmam_api_path = "https://api.edamam.com/search?q=" + food + "&app_id=" + app_id + "&app_key=" + app_key
@@ -45,5 +46,7 @@ recipe_article_content = recipe_soup_parser.find("div", {"class": "article-conte
 recipe_article_text = recipe_article_content.get_text()
 
 print(recipe_article_text)
+
+
 
 print("All good!")
