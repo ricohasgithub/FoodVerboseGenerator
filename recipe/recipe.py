@@ -6,5 +6,7 @@ class Recipe:
         self.r_content = recipe_content
 
     def split_recipe(self, recipe_content):
-        sentences = recipe_content.split(".")
+        all_sentences = recipe_content.split(".")
+        sentences = []
+
         self.r_senteces = sentences
