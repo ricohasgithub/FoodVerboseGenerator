@@ -7,6 +7,9 @@ import spacy
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 
+# Import custom classes for NLP
+from recipe.recipe import Recipe
+
 '''
  The API request path builder with mandatory data
  Format: https://api.edamam.com/search?q={FOOD_NAME}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}
@@ -47,6 +50,7 @@ recipe_article_text = recipe_article_content.get_text()
 
 print(recipe_article_text)
 
-
+c_recipe = Recipe(food, source_url, recipe_article_text)
+c_recipe.print_body()
 
 print("All good!")
