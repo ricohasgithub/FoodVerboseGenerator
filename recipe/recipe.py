@@ -10,6 +10,8 @@ class Recipe:
         self.split_recipe(recipe_content)
 
     def split_recipe(self, recipe_content):
+        # First replace all blank lines with periods (used to account for lists of data)
+        recipe_content.replace("\n", ".")
         # All the sentences in the input string
         all_sentences = recipe_content.split(".")
         # List for all sentences that pass the minimum word length requirement
@@ -20,7 +22,7 @@ class Recipe:
             # Create an insance of the current sentence in the body string
             c_sentence_inst = Sentence(c_sentence)
             # Check test
-            if c_sentence_inst.in_length == True:
+            if c_sentence_inst.in_length() == True:
                 sentences.append(c_sentence_inst)
 
         self.r_sentences = sentences
@@ -30,4 +32,4 @@ class Recipe:
         print("Source Food: " + self.r_food)
         print("Source URL: " + self.r_url)
         for sentence in self.r_sentences:
-            print("Sentence: " + self.r_senteces)
+            sentence.print_self()

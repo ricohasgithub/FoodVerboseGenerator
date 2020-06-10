@@ -8,3 +8,8 @@ class Sentence:
             return True
         else:
             return False
+
+    def print_self(self):
+        for word in self.sentence:
+            print(word, end = " ")
+        print()
