@@ -17,6 +17,8 @@ class Sentence:
         doc = nlp(self.sentence)
         for token in doc:
             vector.append(vector_value(token.dep_))
+        self.vector = vector
+        return vector
 
     def vector_value(self, type):
         return self.dep_types.index(type)

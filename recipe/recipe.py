@@ -27,6 +27,13 @@ class Recipe:
 
         self.r_sentences = sentences
 
+    def tensorize(self):
+        tensor = []
+        for sentence in self.r_sentences:
+            tensor.append(sentence.vectorize())
+        self.r_tensor = tensor
+        return tensor
+
     def print_body(self):
         # Equivalence of a Java toString method but prints it as well
         print("Source Food: " + self.r_food)
