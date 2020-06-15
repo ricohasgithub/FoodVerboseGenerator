@@ -11,6 +11,12 @@ from bs4 import BeautifulSoup
 from recipe.recipe import Recipe
 
 '''
+ Start by configuring the GCP Vision API for recognizing food in images
+'''
+vision_key = os.getenv("FoodVerboseGenerator_GCP_Vision_Key")
+
+
+'''
  The API request path builder with mandatory data
  Format: https://api.edamam.com/search?q={FOOD_NAME}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}
 '''
