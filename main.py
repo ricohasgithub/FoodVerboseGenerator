@@ -4,6 +4,9 @@ import requests
 
 import spacy
 
+from google.cloud import vision
+from google.cloud.vision import types
+
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 
@@ -11,10 +14,10 @@ from bs4 import BeautifulSoup
 from recipe.recipe import Recipe
 
 '''
- Start by configuring the GCP Vision API for recognizing food in images
+ Start by configuring the GCP Vision API for recognizing food in images.
 '''
 vision_key = os.getenv("FoodVerboseGenerator_GCP_Vision_Key")
-
+client = vision.ImageAnnotatorClient()
 
 '''
  The API request path builder with mandatory data
