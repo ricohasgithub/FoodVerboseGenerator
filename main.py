@@ -16,8 +16,22 @@ from recipe.recipe import Recipe
 '''
  Start by configuring the GCP Vision API for recognizing food in images.
 '''
-vision_key = os.getenv("FoodVerboseGenerator_GCP_Vision_Key")
+
+# The destination image as a URI
+image_uri = "https://www.pngitem.com/pimgs/m/640-6400950_plain-pizza-pizza-hd-png-download.png"
+
+# Read the API key (auto configured in env) and initialize the API Vision Client with the image source
 client = vision.ImageAnnotatorClient()
+image = vision.types.Image()
+image.source.image_uri = image_uri
+
+# Get the object detection response
+response = client.label_detection(image=image)
+
+print('Labels (and confidence score):')
+print('=' * 79)
+for label in response.label_annotations:
+    print(f'{label.description} ({label.score*100.:.2f}%)')
 
 '''
  The API request path builder with mandatory data
