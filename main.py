@@ -39,7 +39,7 @@ for label in response.label_annotations:
 '''
 
 # Edamam Recpie Search API Constants
-food = "pizza"
+food = response.label_annotations[0]
 app_id = os.getenv("EDAMAM_RECIPE_ID")
 app_key = os.getenv("EDAMAM_RECIPE_KEY")
 
